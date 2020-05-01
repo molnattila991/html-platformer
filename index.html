@@ -10,12 +10,19 @@
 
     </div>
 
+    <!-- Script order is must be sorted by dependency -->
     <script src="models/vector.js"></script>
     <script src="models/static-object.js"></script>
+    <script src="models/moving-object.js"></script>
+
+
+    <!-- Every script file must be above main.js. -->
     <script src="models/main.js"></script>
 
     <script>
         initWorld();
+
+        setInterval(() => { actionsInEveryFrame() }, 10);
     </script>
 </body>
 
