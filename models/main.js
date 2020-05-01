@@ -1,13 +1,13 @@
 const staticObjects = [];
 const movingObjects = [];
+const playerObjects = [];
 
 function initWorld() {
+    let width = 100;
+    let height = 100;
 
     //Add static objects (bricks)
     for (let index = 0; index < 10; index++) {
-        let width = 100;
-        let height = 100;
-
         let newObject = new StaticObject(
             new Vector(width * index, 500),
             new Vector(width, height),
@@ -20,10 +20,9 @@ function initWorld() {
         staticObjects.push(newObject);
     }
 
-    //Add one moving object 
-    let width = 100;
-    let height = 100;
 
+
+    //Add one moving object 
     let newObject = new MovingObject(
         new Vector(100, 300),
         new Vector(width, height),
@@ -36,6 +35,21 @@ function initWorld() {
     newObject.addStyle("moving-object-mario-standing");
     
     movingObjects.push(newObject);
+
+
+    //Add player moving object
+    let newObjectPlayer = new PlayerObject(
+        new Vector(300, 400),
+        new Vector(width, height),
+        "green",
+        "player-object-mario-1",
+        1,
+        new Vector(1, 0)
+    );
+
+    newObjectPlayer.addStyle("moving-object-mario-standing");
+    
+    playerObjects.push(newObjectPlayer);
 }
 
 function actionsInEveryFrame() {
@@ -51,6 +65,10 @@ function update() {
     for (const item of movingObjects) {
         item.update();
     }
+
+    for (const item of playerObjects) {
+        item.update();
+    }
 }
 
 function render() {
@@ -59,6 +77,10 @@ function render() {
     }
 
     for (const item of movingObjects) {
+        item.render();
+    }
+
+    for (const item of playerObjects) {
         item.render();
     }
 }

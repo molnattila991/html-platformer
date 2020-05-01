@@ -13,5 +13,5 @@
 .moving-object-mario-standing {
     background-image: url("../images/mario-standing.png");
     /* background-repeat: repeat-y; */
-    background-size: contain;
+    background-size: 100% 100%;
 }
