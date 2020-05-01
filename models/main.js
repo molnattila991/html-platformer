@@ -2,16 +2,24 @@ const staticObjects = [];
 
 function initWorld() {
 
-    let newObject = new StaticObject(
-        new Vector(10, 10),
-        new Vector(100, 100),
-        "green",
-        "static-object-1"
-    );
 
-    newObject.addStyle("static-object-brick");
+    for (let index = 0; index < 10; index++) {
+        let width = 100;
+        let height = 100;
 
-    staticObjects.push(newObject);
+        let newObject = new StaticObject(
+            new Vector(width * index, 500),
+            new Vector(width, height),
+            "green",
+            "static-object-" + index
+        );
+
+        newObject.addStyle("static-object-brick");
+
+        staticObjects.push(newObject);
+    }
+
+
 }
 
 function render() {

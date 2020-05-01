@@ -19,12 +19,13 @@ class StaticObject {
 
         if (this.htmlElement == undefined) {
             this.htmlElement = document.createElement("DIV");
-            this.htmlElement.setAttribute("left", this.position.x + "px");
-            this.htmlElement.setAttribute("top", this.position.y + "px");
             this.htmlElement.setAttribute("style",
                 `background-color:` + this.color + `;
-                 width: ` + this.dimension.x + `;
-                 height: ` + this.dimension.y + `;
+                 position: absolute;
+                 left: ` + this.position.x + `px;
+                 top: ` + this.position.y + `px;
+                 width: ` + this.dimension.x + `px;
+                 height: ` + this.dimension.y + `px;
                 `
             );
 
