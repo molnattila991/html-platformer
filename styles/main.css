@@ -3,3 +3,9 @@
     left: 0px;
     top: 0px;
 }
+
+.static-object-brick {
+    background-image: url("../images/brick1.png");
+    /* background-repeat: repeat-y; */
+    background-repeat: repeat;
+}

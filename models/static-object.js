@@ -33,6 +33,10 @@ class StaticObject {
         }
     }
 
+    addStyle(styleName) {
+        this.htmlElement.setAttribute("class", styleName);
+    }
+
     update() {
 
     }
