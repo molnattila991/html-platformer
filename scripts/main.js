@@ -68,7 +68,7 @@ function initWorld() {
         "green",
         "player-object-mario-1",
         new Vector(15, 15),
-        new Vector(0, 0)
+        new Vector(0, 1)
     );
 
     newObjectPlayer.addStyle("moving-object-mario-standing");
@@ -98,16 +98,44 @@ function update() {
 
     for (const player of playerObjects) {
         for (const enemy of movingObjects) {
-            if (enemy.isCollide(player)) {
-                uiLogPanel.updateText([`Player (` + player.id + `) collided with enemy (` + enemy.id + `)`]);
-                document.dispatchEvent(eventMarioDie);
+            let collision = player.isCollide(enemy);
+            if (collision.collide) {
+                uiLogPanel.updateText([`Player (` + player.id + `) collided with enemy (` + enemy.id + `)`, ...collision.collisions]);
+
+                if (collision.collisions.find(i => i == "from-top") == undefined)
+                    document.dispatchEvent(eventMarioDie);
             }
         }
 
+        let playerIsOnGround = false;
         for (const static of staticObjects) {
-            if (static.isCollide(player)) {
-                uiLogPanel.updateText([`Player (` + player.id + `) collided with static object (` + static.id + `)`]);
+            let collision = player.isCollide(static);
+
+            if (collision.collide) {
+                uiLogPanel.updateText([`Player (` + player.id + `) collided with static object (` + static.id + `)`, ...collision.collisions]);
+
+                if (collision.collisions.find(i => i == "from-top") != undefined) {
+                    playerIsOnGround = true;
+                    var event = new CustomEvent("touch-ground-event", {
+                        detail: {
+                            obj1: static,
+                            obj2: player
+                        }
+                    });
+                    document.dispatchEvent(event);
+                }
+
             }
+        }
+
+        if(playerIsOnGround == false) {
+            playerIsOnGround = true;
+                    var event = new CustomEvent("object-is-falling-event", {
+                        detail: {
+                            obj: player
+                        }
+                    });
+                    document.dispatchEvent(event);
         }
     }
 }

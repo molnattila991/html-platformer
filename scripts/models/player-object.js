@@ -44,6 +44,13 @@ class PlayerObject extends MovingObject {
             // right arrow
             this.movingDirection.x = 1;
         }
+
+        else if (e.keyCode == '32') {
+            if (this.onGround) {
+                this.movingDirection.y = 1;
+                this.speed.y = -30;
+            }
+        }
     }
 
     addEventListeners() {
