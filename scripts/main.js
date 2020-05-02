@@ -20,6 +20,20 @@ function initWorld() {
         staticObjects.push(newObject);
     }
 
+    for (let index = 0; index < 10; index++) {
+        let platformIndex = index + 10;
+        let newObject = new StaticObject(
+            new Vector(width * index, 600),
+            new Vector(width, height),
+            "green",
+            "static-object-" + platformIndex
+        );
+
+        newObject.addStyle("static-object-brick");
+
+        staticObjects.push(newObject);
+    }
+
 
 
     //Add one moving object 

@@ -11,14 +11,16 @@
     </div>
 
     <!-- Script order is must be sorted by dependency -->
-    <script src="models/vector.js"></script>
-    <script src="models/static-object.js"></script>
-    <script src="models/moving-object.js"></script>
-    <script src="models/player-object.js"></script>
+    <script src="scripts/helper/vector.js"></script>
+    <script src="scripts/helper/bounding-rectangle.js"></script>
+
+    <script src="scripts/models/static-object.js"></script>
+    <script src="scripts/models/moving-object.js"></script>
+    <script src="scripts/models/player-object.js"></script>
 
 
     <!-- Every script file must be above main.js. -->
-    <script src="models/main.js"></script>
+    <script src="scripts/main.js"></script>
 
     <script>
         initWorld();
