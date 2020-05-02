@@ -10,8 +10,6 @@ class UiLogPanel {
     }
 
     updateText(textArray) {
-        this.clearContent();
-
         let htmlList = document.createElement("ul");
 
         for (const text of textArray) {

@@ -41,7 +41,7 @@ function initWorld() {
 
     //Add one moving object 
     let newObject = new MovingObject(
-        new Vector(100, 300),
+        new Vector(100, 360),
         new Vector(width, height),
         "green",
         "moving-object-mario-1",
@@ -50,7 +50,7 @@ function initWorld() {
     );
 
     newObject.addStyle("moving-object-mario-standing");
-    
+
     movingObjects.push(newObject);
 
 
@@ -65,7 +65,7 @@ function initWorld() {
     );
 
     newObjectPlayer.addStyle("moving-object-mario-standing");
-    
+
     playerObjects.push(newObjectPlayer);
 }
 
@@ -89,11 +89,16 @@ function update() {
         item.update();
     }
 
-    for (const enemy of movingObjects) {
-        for (const player of playerObjects) {
-            if(enemy.isCollide(player))
-            {
+    for (const player of playerObjects) {
+        for (const enemy of movingObjects) {
+            if (enemy.isCollide(player)) {
                 uiLogPanel.updateText([`Player (` + player.id + `) collided with enemy (` + enemy.id + `)`]);
+            }
+        }
+
+        for (const static of staticObjects) {
+            if (static.isCollide(player)) {
+                uiLogPanel.updateText([`Player (` + player.id + `) collided with static object (` + static.id + `)`]);
             }
         }
     }
