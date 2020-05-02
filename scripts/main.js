@@ -1,8 +1,11 @@
 const staticObjects = [];
 const movingObjects = [];
 const playerObjects = [];
+var uiLogPanel;
 
 function initWorld() {
+    uiLogPanel = new UiLogPanel();
+
     let width = 100;
     let height = 100;
 
@@ -42,7 +45,7 @@ function initWorld() {
         new Vector(width, height),
         "green",
         "moving-object-mario-1",
-        new Vector(1, 0),
+        new Vector(3, 0),
         new Vector(1, 0)
     );
 
@@ -57,7 +60,7 @@ function initWorld() {
         new Vector(width, height),
         "green",
         "player-object-mario-1",
-        new Vector(2, 0),
+        new Vector(15, 0),
         new Vector(0, 0)
     );
 
@@ -72,6 +75,8 @@ function actionsInEveryFrame() {
 }
 
 function update() {
+    uiLogPanel.clearContent();
+
     for (const item of staticObjects) {
         item.update();
     }
@@ -88,7 +93,7 @@ function update() {
         for (const player of playerObjects) {
             if(enemy.isCollide(player))
             {
-                console.log("collide");
+                uiLogPanel.updateText([`Player (` + player.id + `) collided with enemy (` + enemy.id + `)`]);
             }
         }
     }
