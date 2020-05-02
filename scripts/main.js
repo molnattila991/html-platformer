@@ -47,12 +47,12 @@ function initWorld() {
 
 
     //Add one moving object 
-    let newObject = new MovingObject(
+    let newObject = new BaseEnemyObject(
         new Vector(100, 360),
         new Vector(width, height),
         "green",
         "moving-object-mario-1",
-        new Vector(3, 0),
+        new Vector(10, 0),
         new Vector(1, 0)
     );
 
