@@ -53,7 +53,7 @@ function initWorld() {
 
     //Add player moving object
     let newObjectPlayer = new PlayerObject(
-        new Vector(300, 400),
+        new Vector(400, 300),
         new Vector(width, height),
         "green",
         "player-object-mario-1",
@@ -82,6 +82,15 @@ function update() {
 
     for (const item of playerObjects) {
         item.update();
+    }
+
+    for (const enemy of movingObjects) {
+        for (const player of playerObjects) {
+            if(enemy.isCollide(player))
+            {
+                console.log("collide");
+            }
+        }
     }
 }
 

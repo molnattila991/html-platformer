@@ -21,10 +21,16 @@ class BoundingRectangle {
 
     setRectanglePoints() {
         this.topLeftPoint = this.position;
+
+        this.topRightPoint = Vector.zero();
         this.topRightPoint.x = this.position.x + this.dimension.x;
         this.topRightPoint.y = this.position.y;
+        
+        this.bottomLeftPoint = Vector.zero();
         this.bottomLeftPoint.x = this.position.x;
         this.bottomLeftPoint.y = this.position.y + this.dimension.y;
+        
+        this.bottomRightPoint = Vector.zero();
         this.bottomRightPoint.x = this.position.x + this.dimension.x;
         this.bottomRightPoint.y = this.position.y + this.dimension.x;
     }

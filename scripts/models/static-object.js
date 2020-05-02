@@ -50,4 +50,8 @@ class StaticObject {
     render() {
 
     }
+
+    isCollide(otherObject) {
+        return otherObject.boundingRectangle.isCollide(this.boundingRectangle);
+    }
 }
