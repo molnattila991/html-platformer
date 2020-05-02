@@ -1,16 +1,17 @@
 class MovingObject extends StaticObject {
-    horizontalSpeed;
+    speed;
     movingDirection;
 
-    constructor(position, dimension, className, id, horizontalSpeed, movingDirection) {
+    constructor(position, dimension, className, id, speed, movingDirection) {
         super(position, dimension, className, id);
 
-        this.horizontalSpeed = horizontalSpeed;
+        this.speed = speed;
         this.movingDirection = movingDirection;
     }
 
     update() {
-        this.position.x += this.movingDirection.x * this.horizontalSpeed;
+        this.position.x += this.movingDirection.x * this.speed.x;
+        this.position.y += this.movingDirection.y * this.speed.y;
         //this.position.y += this.movingDirection.y;
     }
 

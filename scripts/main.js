@@ -42,7 +42,7 @@ function initWorld() {
         new Vector(width, height),
         "green",
         "moving-object-mario-1",
-        1,
+        new Vector(1, 0),
         new Vector(1, 0)
     );
 
@@ -57,8 +57,8 @@ function initWorld() {
         new Vector(width, height),
         "green",
         "player-object-mario-1",
-        1,
-        new Vector(1, 0)
+        new Vector(2, 0),
+        new Vector(0, 0)
     );
 
     newObjectPlayer.addStyle("moving-object-mario-standing");
