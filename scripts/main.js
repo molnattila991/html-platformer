@@ -96,6 +96,37 @@ function update() {
         item.update();
     }
 
+    for (const enemy of movingObjects) {
+
+        let enemyIsOnGround = false;
+        for (const mapItem of staticObjects) {
+            let collision = enemy.isCollide(mapItem);
+            if (collision.collide) {
+                uiLogPanel.updateText([`Enemy (` + enemy.id + `) collided with static (` + mapItem.id + `)`, ...collision.collisions]);
+
+                if (collision.collisions.find(i => i == "from-top") != undefined) {
+                    playerIsOnGround = true;
+                    var event = new CustomEvent("touch-ground-event" + enemy.id, {
+                        detail: {
+                            obj1: mapItem,
+                            obj2: enemy
+                        }
+                    });
+                    document.dispatchEvent(event);
+                }
+            }
+        }
+
+        if (enemyIsOnGround == false) {
+            var event = new CustomEvent("object-is-falling-event" + enemy.id, {
+                detail: {
+                    obj: enemy
+                }
+            });
+            document.dispatchEvent(event);
+        }
+    }
+
     for (const player of playerObjects) {
         for (const enemy of movingObjects) {
             let collision = player.isCollide(enemy);
@@ -116,7 +147,7 @@ function update() {
 
                 if (collision.collisions.find(i => i == "from-top") != undefined) {
                     playerIsOnGround = true;
-                    var event = new CustomEvent("touch-ground-event", {
+                    var event = new CustomEvent("touch-ground-event" + player.id, {
                         detail: {
                             obj1: static,
                             obj2: player
@@ -128,14 +159,14 @@ function update() {
             }
         }
 
-        if(playerIsOnGround == false) {
+        if (playerIsOnGround == false) {
             playerIsOnGround = true;
-                    var event = new CustomEvent("object-is-falling-event", {
-                        detail: {
-                            obj: player
-                        }
-                    });
-                    document.dispatchEvent(event);
+            var event = new CustomEvent("object-is-falling-event" + player.id, {
+                detail: {
+                    obj: player
+                }
+            });
+            document.dispatchEvent(event);
         }
     }
 }

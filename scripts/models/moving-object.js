@@ -10,20 +10,17 @@ class MovingObject extends StaticObject {
         this.speed = speed;
         this.movingDirection = movingDirection;
 
-        document.addEventListener('touch-ground-event', (e) => {
-            if (e.detail.obj2.id == this.id) {
-                this.onGround = true;
-                this.speed.y = 0;
-                this.movingDirection.y = 0;
-                this.position.y = e.detail.obj1.position.y - this.dimension.y;
-            }
+        document.addEventListener('touch-ground-event' + this.id, (e) => {
+            this.onGround = true;
+            this.speed.y = 0;
+            this.movingDirection.y = 0;
+            this.position.y = e.detail.obj1.position.y - this.dimension.y;
         }, false);
 
-        document.addEventListener('object-is-falling-event', (e) => {
-            if (e.detail.obj.id == this.id) {
-                this.onGround = false;
-                this.movingDirection.y = 1;
-            }
+        document.addEventListener('object-is-falling-event' + this.id, (e) => {
+            this.onGround = false;
+            this.movingDirection.y = 1;
+
         }, false);
     }
 
