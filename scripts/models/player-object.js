@@ -16,9 +16,10 @@ class PlayerObject extends MovingObject {
 
         if (e.keyCode == '38') {
             // up arrow
+            this.movingDirection.y = 0;
         }
         else if (e.keyCode == '40') {
-            // down arrow
+            this.movingDirection.y = 0;
         }
         else if (e.keyCode == '37') {
             // left arrow
@@ -35,9 +36,11 @@ class PlayerObject extends MovingObject {
 
         if (e.keyCode == '38') {
             // up arrow
+            this.movingDirection.y = -1;
         }
         else if (e.keyCode == '40') {
             // down arrow
+            this.movingDirection.y = 1;
         }
         else if (e.keyCode == '37') {
             // left arrow

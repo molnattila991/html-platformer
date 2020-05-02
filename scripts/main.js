@@ -60,7 +60,7 @@ function initWorld() {
         new Vector(width, height),
         "green",
         "player-object-mario-1",
-        new Vector(15, 0),
+        new Vector(15, 15),
         new Vector(0, 0)
     );
 
