@@ -1,0 +1,1 @@
+var eventMarioDie = new Event('mario-die-event');

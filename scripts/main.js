@@ -1,10 +1,17 @@
-const staticObjects = [];
-const movingObjects = [];
-const playerObjects = [];
+var staticObjects = [];
+var movingObjects = [];
+var playerObjects = [];
 var uiLogPanel;
 
-function initWorld() {
+function reset() {
+    staticObjects = [];
+    movingObjects = [];
+    playerObjects = [];
     uiLogPanel = new UiLogPanel();
+}
+
+function initWorld() {
+    this.reset();
 
     let width = 100;
     let height = 100;
@@ -93,6 +100,7 @@ function update() {
         for (const enemy of movingObjects) {
             if (enemy.isCollide(player)) {
                 uiLogPanel.updateText([`Player (` + player.id + `) collided with enemy (` + enemy.id + `)`]);
+                document.dispatchEvent(eventMarioDie);
             }
         }
 

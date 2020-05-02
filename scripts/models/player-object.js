@@ -2,13 +2,7 @@ class PlayerObject extends MovingObject {
     constructor(position, dimension, className, id, speed, movingDirection) {
         super(position, dimension, className, id, speed, movingDirection);
 
-        document.addEventListener("keydown", (event) => {
-            this.checkKey(event);
-        });
-
-        document.addEventListener("keyup", (event) => {
-            this.releaseKey(event);
-        });
+        this.addEventListeners();
     }
 
     releaseKey(e) {
@@ -50,5 +44,20 @@ class PlayerObject extends MovingObject {
             // right arrow
             this.movingDirection.x = 1;
         }
+    }
+
+    addEventListeners() {
+        document.addEventListener("keydown", (event) => {
+            this.checkKey(event);
+        });
+
+        document.addEventListener("keyup", (event) => {
+            this.releaseKey(event);
+        });
+
+        document.addEventListener('mario-die-event', (e) => {
+            var x = document.getElementById("mariod-die-sound-effect");
+            x.play();
+        }, false);
     }
 }
