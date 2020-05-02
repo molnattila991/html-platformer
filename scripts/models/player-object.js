@@ -1,6 +1,6 @@
 class PlayerObject extends MovingObject {
-    constructor(position, dimension, color, id, horizontalSpeed, movingDirection) {
-        super(position, dimension, color, id, horizontalSpeed, movingDirection);
+    constructor(position, dimension, className, id, horizontalSpeed, movingDirection) {
+        super(position, dimension, className, id, horizontalSpeed, movingDirection);
 
         document.addEventListener("keydown", (event) => {
             this.checkKey(event);

@@ -2,8 +2,8 @@ class MovingObject extends StaticObject {
     horizontalSpeed;
     movingDirection;
 
-    constructor(position, dimension, color, id, horizontalSpeed, movingDirection) {
-        super(position, dimension, color, id);
+    constructor(position, dimension, className, id, horizontalSpeed, movingDirection) {
+        super(position, dimension, className, id);
 
         this.horizontalSpeed = horizontalSpeed;
         this.movingDirection = movingDirection;
@@ -15,14 +15,7 @@ class MovingObject extends StaticObject {
     }
 
     render() {
-        this.htmlElement.setAttribute("style",
-            `background-color:` + this.color + `;
-             position: absolute;
-             left: ` + this.position.x + `px;
-             top: ` + this.position.y + `px;
-             width: ` + this.dimension.x + `px;
-             height: ` + this.dimension.y + `px;
-            `
-        );
+        this.htmlElement.style.left = this.position.x + `px`;
+        this.htmlElement.style.top = this.position.y + `px`;
     }
 }
