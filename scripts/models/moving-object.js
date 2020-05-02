@@ -13,6 +13,8 @@ class MovingObject extends StaticObject {
         this.position.x += this.movingDirection.x * this.speed.x;
         this.position.y += this.movingDirection.y * this.speed.y;
         //this.position.y += this.movingDirection.y;
+
+        this.boundingRectangle.setPosition(this.position);
     }
 
     render() {

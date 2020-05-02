@@ -4,12 +4,15 @@ class StaticObject {
     id;
     htmlElement;
     class;
+    boundingRectangle;
 
     constructor(position, dimension, className, id) {
         this.position = position;
         this.dimension = dimension;
         this.id = id;
         this.class = className;
+
+        this.boundingRectangle = new BoundingRectangle(this.position, this.dimension);
 
         this.init();
     }
