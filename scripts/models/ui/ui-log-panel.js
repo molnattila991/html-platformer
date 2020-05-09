@@ -5,7 +5,7 @@ class UiLogPanel {
         this.htmlElement = document.createElement("div");
         this.htmlElement.classList.add("ui-log-panel");
 
-        this.screenHtmlElement = document.getElementById("screen");
+        this.screenHtmlElement = document.getElementById("debug");
         this.screenHtmlElement.appendChild(this.htmlElement);
     }
 

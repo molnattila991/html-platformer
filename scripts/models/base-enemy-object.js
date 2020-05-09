@@ -5,8 +5,7 @@ class BaseEnemyObject extends MovingObject {
     }
 
     update() {
-        let screen = document.getElementById("screen");
-        console.log(screen.offsetWidth);
+        let screen = document.getElementById("game");
         if (this.position.x + this.dimension.x >= screen.offsetWidth) {
             this.movingDirection.x *= -1;
         }

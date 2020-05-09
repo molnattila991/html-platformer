@@ -30,7 +30,7 @@ class StaticObject {
 
             this.addStyle(this.className);
 
-            let screenHtmlElement = document.getElementById("screen");
+            let screenHtmlElement = document.getElementById("game");
             screenHtmlElement.appendChild(this.htmlElement);
         }
     }

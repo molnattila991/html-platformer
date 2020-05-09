@@ -14,7 +14,12 @@
 
 <body>
     <div style="position: relative; width: 100%; height: 100%;" id="screen">
+        <div id="game" style="position: absolute;width: 70%;height: 100%; left:0px;">
 
+        </div>
+        <div id="debug" style="position: absolute;width: 30%;height: 100%; right:0px;">
+
+        </div>
     </div>
 
     <!-- Script order is must be sorted by dependency -->
@@ -28,12 +33,15 @@
     <!-- UI scripts -->
     <script src="scripts/models/ui/ui-log-panel.js"></script>
 
+
+    
     <!-- Models -->
     <script src="scripts/models/static-object.js"></script>
     <script src="scripts/models/moving-object.js"></script>
     <script src="scripts/models/player-object.js"></script>
     <script src="scripts/models/base-enemy-object.js"></script>
-
+    
+    <script src="scripts/models/camera.js"></script>
 
     <!-- Every script file must be above main.js. -->
     <script src="scripts/main.js"></script>
@@ -41,7 +49,7 @@
     <script>
         initWorld();
 
-        setInterval(() => { actionsInEveryFrame() }, 50);
+        setInterval(() => { actionsInEveryFrame() }, 10);
     </script>
 </body>
 
